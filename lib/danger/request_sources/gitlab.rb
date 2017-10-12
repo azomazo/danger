@@ -85,7 +85,7 @@ module Danger
         raise "Are you running `danger local/pr` against the correct repository? Also this can happen if you run danger on MR without changes" if base_commit.empty?
         base_branch = self.mr_json.source_branch
         head_branch = self.mr_json.target_branch
-        head_commit = self.scm.head_commit
+        head_commit = self.mr_json.sha
 
         # Next, we want to ensure that we have a version of the current branch at a known location
         scm.ensure_commitish_exists_on_branch! base_branch, base_commit
